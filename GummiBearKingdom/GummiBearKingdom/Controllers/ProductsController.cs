@@ -15,5 +15,11 @@ namespace GummiBearKingdom.Controllers
             List<Product> model = db.Products.ToList();
             return View(model);
         }
+
+        public IActionResult Details(int id)
+        {
+            Product thisProduct = db.Products.FirstOrDefault(products => products.ProductId == id);
+            return View(thisProduct);
+        }
     }
 }
