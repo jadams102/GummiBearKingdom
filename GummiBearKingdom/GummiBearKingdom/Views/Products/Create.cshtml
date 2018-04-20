@@ -1,0 +1,23 @@
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model GummiBearKingdom.Models.Product
+
+<h2>Create New Product</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+    @Html.LabelFor(model => model.Description)
+    @Html.TextAreaFor(model => model.Description)
+    @Html.LabelFor(model => model.Price)
+    @Html.TextAreaFor(model => model.Price)
+    <input type="submit" value="Add new product"/>
+}
+
+<a asp-action="Index">Back to List</a>  
+
