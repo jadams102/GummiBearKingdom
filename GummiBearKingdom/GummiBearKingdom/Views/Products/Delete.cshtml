@@ -1,0 +1,18 @@
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model GummiBearKingdom.Models.Product
+
+<h2>Are you sure you'd like to delete this product?</h2>
+<h4>Name: @Model.Name</h4>
+<h4>Description:</h4>
+<p>@Model.Description</p>
+<h4>Price: @Model.Price</h4>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete"/>
+}
+<a asp-action="Index">Back</a>
