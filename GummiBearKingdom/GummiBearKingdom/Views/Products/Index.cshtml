@@ -7,11 +7,11 @@
 
 
     <h2>Products</h2>
-    <a asp-action="Create">Add Product</a>
-    <ul>
+    <a class="btn btn-info btn-large" asp-action="Create">Add Product</a>
+    <hr />
         @foreach (var product in Model)
     {
-        <li><a asp-controller="Products" asp-action="Details" asp-route-id="@product.ProductId">@product.Name</a> - <a asp-action="Edit" asp-route-id="@product.ProductId">Edit</a> | <a asp-action="Delete" asp-route-id="@product.ProductId">Delete</a></li>
+    <h3><a asp-controller="Products" asp-action="Details" asp-route-id="@product.ProductId">@product.Name</a></h3>
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@product.ProductId">Edit</a>  
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@product.ProductId">Delete</a>
     }
-    </ul>
-
