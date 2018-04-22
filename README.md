@@ -18,6 +18,7 @@ Requires .NET Framework SDK, MAMP
 3. Run command "dotnet restore" on folder containing .csproj file
 2. Run command "dotnet ef database update" to create database structure
 3. Run command "dotnet run" and navigate to http://localhost:XXXXX as indicated by console.
+4. If you would like to use dummy database information open PhpMyAdmin through MAMP, drop the gummibear database, and import database from gummibear.sql in top level directory of project.
 
 ## Known Bugs
 * No known bugs at this time.
