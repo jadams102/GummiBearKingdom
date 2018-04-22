@@ -8,12 +8,17 @@ namespace GummiBearKingdom.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.AddColumn<string>(
+                name: "imageUrl",
+                table: "Products",
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.DropColumn(
+                name: "imageUrl",
+                table: "Products");
         }
     }
 }

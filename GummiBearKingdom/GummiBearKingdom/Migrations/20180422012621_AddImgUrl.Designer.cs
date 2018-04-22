@@ -8,7 +8,7 @@ using GummiBearKingdom.Models;
 namespace GummiBearKingdom.Migrations
 {
     [DbContext(typeof(GummiBearDbContext))]
-    [Migration("20180422005555_AddImgUrl")]
+    [Migration("20180422012621_AddImgUrl")]
     partial class AddImgUrl
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,8 @@ namespace GummiBearKingdom.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Price");
+
+                    b.Property<string>("imageUrl");
 
                     b.HasKey("ProductId");
 

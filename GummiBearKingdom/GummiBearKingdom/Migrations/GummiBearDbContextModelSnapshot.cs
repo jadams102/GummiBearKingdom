@@ -26,6 +26,8 @@ namespace GummiBearKingdom.Migrations
 
                     b.Property<string>("Price");
 
+                    b.Property<string>("imageUrl");
+
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
