@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model IEnumerable<GummiBearKingdom.Models.Product>
+
+
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -28,3 +31,19 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<h2>Check out our products!</h2>
+@foreach (var product in Model)
+{
+    <div class="panel">
+        <div class="panel-heading">
+            <h2>@product.Name</h2>
+        </div>
+        <div class="panel-body">
+            <p>@product.Description</p>
+        </div>
+        <div class="panel-footer">
+            <h4>Price: @product.Price</h4>
+        </div>
+    </div>
+}
