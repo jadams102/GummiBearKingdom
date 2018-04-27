@@ -24,5 +24,18 @@ namespace GummiBearKingdom.Models
                 return false;
             }
         }
+
+        public override bool Equals(System.Object otherReview)
+        {
+            if (!(otherReview is Review))
+            {
+                return false;
+            }
+            else
+            {
+                Review newReview = (Review)otherReview;
+                return this.ReviewId.Equals(newReview.ReviewId);
+            }
+        }
     }
 }
