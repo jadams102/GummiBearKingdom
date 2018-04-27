@@ -13,6 +13,18 @@
 <h4>Description</h4>
 <p>@Model.Description</p>
 <h4>Price: @Model.Price</h4>
+<h4>Reviews:</h4>
+@foreach(var review in Model.Reviews)
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h5 class="review-name">@review.UserName</h5>
+            <h5 class="review-rating">@review.rat</h5>
+            
+        </div>
+    </div>
+
+}
 
 <a class="btn btn-info" asp-action="Index" asp-route-id="@Model.ProductId">Back</a>
 

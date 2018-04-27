@@ -8,6 +8,7 @@ namespace GummiBearKingdom.Models
     {
         [Key]
         public int ReviewId { get; set; }
+        public int Rating { get; set; }
         public string UserName { get; set; }
         public string Body { get; set; }
         public int ProductId { get; set; }

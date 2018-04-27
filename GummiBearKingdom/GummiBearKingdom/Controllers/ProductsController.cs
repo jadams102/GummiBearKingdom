@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;;
+using Microsoft.EntityFrameworkCore;
 using GummiBearKingdom.Models;
 
 namespace GummiBearKingdom.Controllers
@@ -20,7 +20,7 @@ namespace GummiBearKingdom.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var thisProduct = await db.Products.Include(product => product.Reviews).SingleOrDefaultAsync(p => p.ProductId == id);
+            var thisProduct = db.Products.Include(products => products.Reviews).FirstOrDefault(p => p.ProductId == id);
             return View(thisProduct);
         }
 
