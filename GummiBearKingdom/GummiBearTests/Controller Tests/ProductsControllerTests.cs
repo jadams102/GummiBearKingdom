@@ -42,7 +42,18 @@ namespace GummiBearTests
             var result = indexView.ViewData.Model;
 
             Assert.IsInstanceOfType(result, typeof(List<Product>));
-            Assert.IsInstanceOfType(result, typeof(List<Product>));
+        }
+        [TestMethod]
+        public void Mock_IndexContainsItems_Collection()
+        {
+            DbSetUp();
+            ProductsController controller = new ProductsController(mock.Object);
+            Product product = new Product { ProductId = 1, Description = "Gummi Bears!", Name = "Gummi Bears", Price = "0.17 / oz", imageUrl = "test url" };
+
+            ViewResult indexView = controller.Index() as ViewResult;
+            List<Product> collection = indexView.ViewData.Model as List<Product>;
+
+            CollectionAssert.Contains(collection, product);
         }
     }
 }
