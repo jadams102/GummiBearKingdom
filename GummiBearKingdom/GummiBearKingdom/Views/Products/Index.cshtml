@@ -6,12 +6,14 @@
 @model IEnumerable<GummiBearKingdom.Models.Product>
 
 
-    <h2>Products</h2>
-    <a class="btn btn-info btn-large" asp-action="Create">Add Product</a>
-    <hr />
-        @foreach (var product in Model)
-    {
+<h2>Products</h2>
+<a class="btn btn-info btn-large" asp-action="Create">Add Product</a>
+<a class="btn btn-info btn-Danger" asp-action="DeleteAll">Delete All</a>
+
+<hr />
+@foreach (var product in Model)
+{
     <h3><a asp-controller="Products" asp-action="Details" asp-route-id="@product.ProductId">@product.Name</a></h3>
-    <a class="btn btn-info" asp-action="Edit" asp-route-id="@product.ProductId">Edit</a>  
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@product.ProductId">Edit</a>
     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@product.ProductId">Delete</a>
-    }
+}

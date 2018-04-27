@@ -72,5 +72,15 @@ namespace GummiBearKingdom.Controllers
             productRepo.Remove(thisProduct);
             return RedirectToAction("Index");
         }
+        public IActionResult DeleteAll()
+        {
+            return View();
+        }
+        [HttpPost, ActionName("DeleteAll")]
+        public IActionResult DeleteAllConfirmed()
+        {
+            productRepo.RemoveAll();
+            return View("Index");
+        }
     }
 }
