@@ -37,5 +37,13 @@ namespace GummiBearKingdom.Controllers
             db.SaveChanges();
             return RedirectToAction("Products", "Detail", review.ProductId);
         }
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var thisReview = db.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
+            db.Reviews.Remove(thisReview);
+            db.SaveChanges();
+            return RedirectToAction("Products", "Index");
+        }
     }
 }
