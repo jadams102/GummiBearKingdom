@@ -17,6 +17,7 @@ namespace GummiBearKingdom.Models
         {
             db = thisDb;
         }
+
         public IQueryable<Product> Products
         { get { return db.Products; } }
 
@@ -41,7 +42,7 @@ namespace GummiBearKingdom.Models
         }
         public void RemoveAll()
         {
-            db.Remove("Products");
+            db.Products.Remove(Product);
             db.SaveChanges();
         }
     }

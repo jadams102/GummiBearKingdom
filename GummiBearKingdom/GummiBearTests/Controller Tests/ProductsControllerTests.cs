@@ -79,6 +79,7 @@ namespace GummiBearTests
             var collection = (controller.Index() as ViewResult).ViewData.Model as List<Product>;
 
             CollectionAssert.Contains(collection, testProduct);
+            db.RemoveAll();
         }
 
     }
