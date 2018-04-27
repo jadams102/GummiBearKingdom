@@ -18,7 +18,7 @@ namespace GummiBearKingdom.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Details(int id)
+        public IActionResult Details(int id)
         {
             var thisProduct = db.Products.Include(products => products.Reviews).FirstOrDefault(p => p.ProductId == id);
             return View(thisProduct);
