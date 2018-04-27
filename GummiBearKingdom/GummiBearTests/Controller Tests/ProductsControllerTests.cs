@@ -68,5 +68,6 @@ namespace GummiBearTests
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
             Assert.IsInstanceOfType(model, typeof(Product));
         }
+
     }
 }
