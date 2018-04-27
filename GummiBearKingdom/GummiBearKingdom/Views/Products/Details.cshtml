@@ -2,6 +2,15 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{
+    List<int> ratings = new List<int>();
+    foreach(var review in Model.Reviews)
+    {
+        ratings.Add(review.Rating);
+    }
+    double avg = Math.Round(ratings.Average());
 }
 @model GummiBearKingdom.Models.Product
 
@@ -13,13 +22,16 @@
 <h4>Description</h4>
 <p>@Model.Description</p>
 <h4>Price: @Model.Price</h4>
+<h3>Average Rating: @avg</h3>
 <h4>Reviews:</h4>
-@foreach(var review in Model.Reviews)
+
+
+@foreach (var review in Model.Reviews)
 {
     <div class="panel panel-info">
         <div class="panel-heading">
             <h5 class="review-name">@review.UserName</h5>
-            <h5 class="review-rating">@review.Rating + "/5"</h5>
+            <h5 class="review-rating">@review.Rating /5</h5>
             <div class="panel-body">
                 <p>@review.Body</p>
             </div>
