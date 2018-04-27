@@ -14,7 +14,7 @@ namespace GummiBearKingdom.Controllers
         private GummiBearDbContext db = new GummiBearDbContext();
         public IActionResult Index()
         {
-            List<Product> model = db.Products.ToList();
+            List<Product> model = db.Products.Include(products => products.Reviews).ToList();
             return View(model);
         }
 
