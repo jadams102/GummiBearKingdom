@@ -55,5 +55,18 @@ namespace GummiBearTests
 
             CollectionAssert.Contains(collection, product);
         }
+        [TestMethod]
+        public void Mock_GetDetails_ReturnsView()
+        {
+            Product product = new Product { ProductId = 1, Description = "Gummi Bears!", Name = "Gummi Bears", Price = "0.17 / oz", imageUrl = "test url" };
+            DbSetUp();
+            ProductsController controller = new ProductsController(mock.Object);
+
+            var resultView = controller.Details(product.ProductId) as ViewResult;
+            var model = resultView.ViewData.Model as Product;
+
+            Assert.IsInstanceOfType(resultView, typeof(ViewResult));
+            Assert.IsInstanceOfType(model, typeof(Product));
+        }
     }
 }
