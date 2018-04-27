@@ -14,5 +14,6 @@ namespace GummiBearKingdom.Models
         public string Description { get; set; }
         public string Price { get; set; }
         public string imageUrl { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

@@ -11,5 +11,7 @@ namespace GummiBearKingdom.Models
         public string UserName { get; set; }
         public string Body { get; set; }
         public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
+
     }
 }
