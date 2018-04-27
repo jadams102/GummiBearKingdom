@@ -26,6 +26,7 @@ namespace GummiBearTests
             Assert.AreEqual("test description", descResult);
             Assert.AreEqual("test name", nameResult);
             Assert.AreEqual("test price", priceResult);
-            Assert.AreEqual(1, idResult);        }
+            Assert.AreEqual(1, idResult);
+        }
     }
 }
