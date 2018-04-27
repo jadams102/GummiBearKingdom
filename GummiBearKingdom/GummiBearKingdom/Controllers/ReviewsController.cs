@@ -11,7 +11,20 @@ namespace GummiBearKingdom.Controllers
 {
     public class ReviewsController : Controller
     {
-        private GummiBearDbContext db = new GummiBearDbContext();
+        private IReviewRepository reviewRepo;
+
+        public ReviewsController(IReviewRepository repo = null)
+        {
+            if(repo == null)
+            {
+                this.reviewRepo = new EFReviewRepository();
+            }
+            else
+            {
+                this.reviewRepo = repo;
+            }
+        }
+
         public IActionResult Create(int id)
         {
             ViewBag.ProductId = id;
@@ -21,33 +34,19 @@ namespace GummiBearKingdom.Controllers
         [HttpPost]
         public IActionResult Create(Review review)
         {
-            db.Reviews.Add(review);
-            db.SaveChanges();
+            reviewRepo.Save(review);
             return RedirectToAction("Details", "Products", new { id = review.ProductId });
-        }
-        public IActionResult Edit(int id)
-        {
-            var thisReview = db.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
-            return View(thisReview);
-        }
-        [HttpPost]
-        public IActionResult Edit(Review review)
-        {
-            db.Entry(review).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Products", "Detail", review.ProductId);
         }
         public IActionResult Delete(int id)
         {
-            var thisReview = db.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
+            Review thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
             return View(thisReview);
         }
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var thisReview = db.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
-            db.Reviews.Remove(thisReview);
-            db.SaveChanges();
+            Review thisReview =  reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
+            reviewRepo.Remove(thisReview);
             return RedirectToAction("Details", "Products", new { id = thisReview.ProductId });
         }
     }
