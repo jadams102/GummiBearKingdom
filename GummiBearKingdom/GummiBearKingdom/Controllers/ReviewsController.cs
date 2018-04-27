@@ -14,8 +14,8 @@ namespace GummiBearKingdom.Controllers
         private GummiBearDbContext db = new GummiBearDbContext();
         public IActionResult Create(int id)
         {
-            var thisProduct = db.Products.FirstOrDefault(product => product.ProductId == id);
-            return View(thisProduct);
+            ViewBag.ProductId = id;
+            return View();
         }
 
         [HttpPost]
@@ -23,7 +23,7 @@ namespace GummiBearKingdom.Controllers
         {
             db.Reviews.Add(review);
             db.SaveChanges();
-            return RedirectToAction("Products", "Detail", review.ProductId);
+            return RedirectToAction("Details", "Products", new { id = review.ProductId });
         }
         public IActionResult Edit(int id)
         {

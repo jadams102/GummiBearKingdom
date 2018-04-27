@@ -19,13 +19,15 @@
     <div class="panel panel-info">
         <div class="panel-heading">
             <h5 class="review-name">@review.UserName</h5>
-            <h5 class="review-rating">@review.rat</h5>
-            
+            <h5 class="review-rating">@review.Rating + "/5"</h5>
+            <div class="panel-body">
+                <p>@review.Body</p>
+            </div>
         </div>
     </div>
 
 }
-
+<a asp-action="Create" asp-controller="Reviews" asp-route-id="@Model.ProductId">Add Review</a>
 <a class="btn btn-info" asp-action="Index" asp-route-id="@Model.ProductId">Back</a>
 
 <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a>
