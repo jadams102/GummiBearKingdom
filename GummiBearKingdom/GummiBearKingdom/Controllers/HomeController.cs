@@ -29,7 +29,7 @@ namespace GummiBearKingdom.Controllers
             List<Product> products = productRepo.Products.Include(p=> p.Reviews).ToList();
             List<Product> sortedProducts = products.OrderByDescending(p => p.AvgRating()).ToList();
             List<Product> topThreeProducts = new List<Product> { sortedProducts[0], sortedProducts[1], sortedProducts[2] };
-            return View(sortedProducts);
+            return View(topThreeProducts);
         }
     }
 }
