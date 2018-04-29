@@ -36,7 +36,7 @@ namespace GummiBearKingdom.Controllers
             return View(thisProduct);
         }
 
-        public IActionResult Create()
+        public ViewResult Create()
         {
             return View();
         }

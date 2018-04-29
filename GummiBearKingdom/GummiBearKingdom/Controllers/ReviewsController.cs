@@ -25,6 +25,11 @@ namespace GummiBearKingdom.Controllers
             }
         }
 
+        public ViewResult Index()
+        {
+            return View(reviewRepo.Reviews.ToList());
+        }
+
         public IActionResult Create(int id)
         {
             ViewBag.ProductId = id;
