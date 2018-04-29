@@ -69,18 +69,29 @@ namespace GummiBearTests
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
             Assert.IsInstanceOfType(model, typeof(Product));
         }
-        //[TestMethod]
-        //public void testDb_Create_AddsToDb()
-        //{
-        //    ProductsController controller = new ProductsController(db);
-        //    Product testProduct = new Product { ProductId = 1, Description = "Gummi Bears!", Name = "Gummi Bears", Price = "0.17 / oz", imageUrl = "test url" };
+        [TestMethod]
+        public void testDb_Create_AddsToDb()
+        {
+            ProductsController controller = new ProductsController(db);
+            Product testProduct = new Product { ProductId = 1, Description = "Gummi Bears!", Name = "Gummi Bears", Price = "0.17 / oz", imageUrl = "test url" };
 
-        //    controller.Create(testProduct);
-        //    var collection = (controller.Index() as ViewResult).ViewData.Model as List<Product>;
+            controller.Create(testProduct);
+            var collection = (controller.Index() as ViewResult).ViewData.Model as List<Product>;
 
-        //    CollectionAssert.Contains(collection, testProduct);
-        //    db.RemoveAll();
-        //}
-       
+            CollectionAssert.Contains(collection, testProduct);
+            db.RemoveAll();
+        }
+        [TestMethod]
+        public void testDb_Delete_RemovesToDb()
+        {
+            ProductsController controller = new ProductsController(db);
+            Product testProduct = new Product { ProductId = 1, Description = "Gummi Bears!", Name = "Gummi Bears", Price = "0.17 / oz", imageUrl = "test url" };
+
+            controller.Create(testProduct);
+            controller.DeleteConfirmed(testProduct.ProductId);
+            var collection = (controller.Index() as ViewResult).ViewData.Model as List<Product>;
+
+            CollectionAssert.DoesNotContain(collection, testProduct);
+        }
     }
 }
