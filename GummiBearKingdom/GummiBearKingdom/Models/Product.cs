@@ -19,19 +19,14 @@ namespace GummiBearKingdom.Models
 
         public double AvgRating()
         {
-            if (this.Reviews.Count == 0)
+     
+            List<int> ratings = new List<int>();
+            foreach (var review in Reviews)
             {
-                return 0;
+                ratings.Add(review.Rating);
             }
-            else
-            {
-                List<int> ratings = new List<int>();
-                foreach (var review in this.Reviews)
-                {
-                    ratings.Add(review.Rating);
-                }
-                return Math.Round(ratings.Average());
-            }
+            return Math.Round(ratings.Average());
+  
         }
 
         public override bool Equals(System.Object otherProduct)
