@@ -55,6 +55,14 @@ namespace GummiBearTests.Model_Tests
             Assert.IsFalse(failReview.FitsCharacters());
             Assert.IsTrue(passReview.FitsCharacters());
         }
+        [TestMethod]
+        public void Rating_RatingIsValid_Bool()
+        {
+            Review passReview = new Review { ReviewId = 1, UserName = "A User", Body = "A Body", Rating = 1 };
+            Review failReview = new Review { ReviewId = 2, UserName = "A User", Body = "A Body", Rating = 7 };
 
+            Assert.IsFalse(failReview.RatingIsValid());
+            Assert.IsTrue(passReview.RatingIsValid());
+        }
     }
 }

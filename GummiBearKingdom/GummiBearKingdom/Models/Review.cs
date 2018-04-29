@@ -26,6 +26,18 @@ namespace GummiBearKingdom.Models
             }
         }
 
+        public bool RatingIsValid()
+        {
+            if ((this.Rating >= 1) && (this.Rating <= 5))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public override bool Equals(System.Object otherReview)
         {
             if (!(otherReview is Review))
