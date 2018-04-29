@@ -14,6 +14,7 @@ namespace GummiBearTests
 
             Assert.AreEqual(testProduct.Name, "Gummi Bears");
         }
+
         [TestMethod]
         public void Setters_SetsProductInfo_Product()
         {
@@ -36,6 +37,7 @@ namespace GummiBearTests
             Assert.AreEqual("test price", priceResult);
             Assert.AreEqual(1, idResult);
         }
+
         [TestMethod]
         public void Getters_GetsProductInfo_Product()
         {
