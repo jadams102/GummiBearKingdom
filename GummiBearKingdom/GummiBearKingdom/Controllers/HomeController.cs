@@ -10,11 +10,26 @@ namespace GummiBearKingdom.Controllers
 {
     public class HomeController : Controller
     {
-        private GummiBearDbContext db = new GummiBearDbContext();
+        private IProductRepository productRepo;
+
+        public HomeController(IProductRepository repo = null)
+        {
+            if (repo == null)
+            {
+                this.productRepo = new EFProductRepository();
+            }
+            else
+            {
+                this.productRepo = repo;
+            }
+        }
+
         public IActionResult Index()
         {
-            List<Product> model = db.Products.ToList();
-            return View(model);
+            List<Product> products = productRepo.Products.Include(p=> p.Reviews).ToList();
+            List<Product> sortedProducts = products.OrderByDescending(p => p.AvgRating()).ToList();
+            List<Product> topThreeProducts = new List<Product> { sortedProducts[0], sortedProducts[1], sortedProducts[2] };
+            return View(sortedProducts);
         }
     }
 }
