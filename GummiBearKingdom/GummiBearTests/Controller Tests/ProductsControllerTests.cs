@@ -92,6 +92,22 @@ namespace GummiBearTests
             var collection = (controller.Index() as ViewResult).ViewData.Model as List<Product>;
 
             CollectionAssert.DoesNotContain(collection, testProduct);
+            db.RemoveAll();
+        }
+        [TestMethod]
+        public void testDb_Edit_UpdatesInDb()
+        {
+            ProductsController controller = new ProductsController(db);
+            Product testProduct = new Product { ProductId = 1, Description = "Gummi Bears!", Name = "Gummi Bears", Price = "0.17 / oz", imageUrl = "test url" };
+            Product updatedProduct = new Product { ProductId = 1, Description = "Gummi Childen!", Name = "Gummi Children", Price = "0.20 / oz", imageUrl = "a different test url" };
+
+            controller.Create(testProduct);
+            testProduct.Name = "Gummi Children";
+            controller.Edit(testProduct);
+            var returnedProduct = (controller.Details(1) as ViewResult).ViewData.Model as Product;
+
+            Assert.AreEqual(returnedProduct.Name, "Gummi Children");
+            db.RemoveAll();
         }
     }
 }
