@@ -29,5 +29,22 @@ namespace GummiBearTests.Model_Tests
             Assert.AreEqual(bodyResult, "A Body");
             Assert.AreEqual(ratingResult, 5);
         }
+
+        [TestMethod]
+        public void Setters_SetReviewData_Review()
+        {
+            Review testReview = new Review { ReviewId = 1, UserName = "A User", Body = "A Body", Rating = 5 };
+
+            testReview.ReviewId = 2;
+            testReview.UserName = "A Different User";
+            testReview.Body = "A Different Body";
+            testReview.Rating = 3;
+
+            Assert.AreEqual(testReview.ReviewId, 2);
+            Assert.AreEqual(testReview.UserName, "A Different User");
+            Assert.AreEqual(testReview.Body, "A Different Body");
+            Assert.AreEqual(testReview.Rating, 3);
+        }
+
     }
 }
