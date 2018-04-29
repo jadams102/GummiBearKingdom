@@ -36,7 +36,7 @@ namespace GummiBearKingdom.Models
 
         public void RemoveAll()
         {
-            db.Database.ExecuteSqlCommand("DELETE FROM Reviews;");
+            db.Database.ExecuteSqlCommand("DELETE FROM products; DELETE FROM reviews");
         }
     }
 }
