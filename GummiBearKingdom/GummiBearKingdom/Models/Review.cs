@@ -13,6 +13,7 @@ namespace GummiBearKingdom.Models
         public string Body { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
+
         public bool FitsCharacters()
         {
             if (this.Body.Length <= 255)

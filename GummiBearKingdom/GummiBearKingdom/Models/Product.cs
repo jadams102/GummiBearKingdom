@@ -14,8 +14,9 @@ namespace GummiBearKingdom.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
-        public string imageUrl { get; set; }    
+        public string imageUrl { get; set; } 
         public virtual ICollection<Review> Reviews { get; set; }
+
         public double AvgRating()
         {
             if (this.Reviews.Count == 0)
