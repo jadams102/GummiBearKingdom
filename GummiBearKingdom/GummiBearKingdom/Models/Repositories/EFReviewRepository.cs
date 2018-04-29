@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GummiBearKingdom.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GummiBearKingdom.Models
 {
@@ -22,6 +23,11 @@ namespace GummiBearKingdom.Models
         {
             db.Reviews.Remove(review);
             db.SaveChanges();
+        }
+
+        public void RemoveAll()
+        {
+            db.Database.ExecuteSqlCommand("DELETE FROM Reviews;");
         }
     }
 }
