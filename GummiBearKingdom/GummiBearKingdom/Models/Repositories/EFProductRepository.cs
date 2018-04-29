@@ -40,6 +40,7 @@ namespace GummiBearKingdom.Models
             db.Products.Remove(product);
             db.SaveChanges();
         }
+
         public void RemoveAll()
         {
             db.Database.ExecuteSqlCommand("DELETE FROM Products;");
