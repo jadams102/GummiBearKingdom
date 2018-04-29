@@ -46,5 +46,15 @@ namespace GummiBearTests.Model_Tests
             Assert.AreEqual(testReview.Rating, 3);
         }
 
+        [TestMethod]
+        public void FitChar_BodyFits255Char_Review()
+        {
+            Review passReview = new Review { ReviewId = 1, UserName = "A User", Body = "A Body", Rating = 5 };
+            Review failReview = new Review { ReviewId = 2, UserName = "A User", Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", Rating = 5 };
+
+            Assert.IsFalse(failReview.FitsCharacters());
+            Assert.IsTrue(passReview.FitsCharacters());
+        }
+
     }
 }
