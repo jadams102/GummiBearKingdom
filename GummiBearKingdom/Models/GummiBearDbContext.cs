@@ -30,6 +30,5 @@ namespace GummiBearKingdom.Models
         {
             base.OnModelCreating(builder);
         }
-
     }
 }
