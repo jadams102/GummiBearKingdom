@@ -21,11 +21,18 @@ namespace GummiBearKingdom.Models
         {
      
             List<int> ratings = new List<int>();
-            foreach (var review in Reviews)
+            if (ratings.Count > 0)
             {
-                ratings.Add(review.Rating);
+                foreach (var review in Reviews)
+                {
+                    ratings.Add(review.Rating);
+                }
+                return Math.Round(ratings.Average());
             }
-            return Math.Round(ratings.Average());
+            else
+            {
+                return 0;
+            }
   
         }
 
